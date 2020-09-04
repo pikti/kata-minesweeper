@@ -40,10 +40,16 @@ namespace MineSweeper.UnitTests.Services
                         "....",
                         ".*..",
                         "...."
+                    },
+                    new string[]{
+                        "3 5",
+                        "**...",
+                        ".....",
+                        ".*..."
                     }
                 });
-            Assert.True(result == "Field #1:\r\n*100\r\n2210\r\n1*10\r\n1110\r\n"
-                , $"result:\r\n{result}\r\nExpected:\r\nField #1:\r\n*100\r\n2210\r\n1*10\r\n1110");
+            Assert.True(result == "Field #1:\r\n*100\r\n2210\r\n1*10\r\n1110\r\n\r\nField #2:\r\n**100\r\n33200\r\n1*100\r\n"
+                , $"result:\r\n{result}\r\nExpected:\r\nField #1:\r\n*100\r\n2210\r\n1*10\r\n1110\r\n\r\nField #2:\r\n**100\r\n33200\r\n1*100");
         }
     }
 }

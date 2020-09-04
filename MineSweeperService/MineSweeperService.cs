@@ -22,22 +22,22 @@ namespace MineSweeper.Services
             return string.Join(Environment.NewLine, result);
         }
 
-       private string GetField(string[] input)
+        private string GetField(string[] input)
         {
             if (input == null) 
                 throw new ArgumentNullException("input should not be null");
             if (input.Length < 2) 
                 throw new ArgumentException("input should contain a first line with integers and the lines related to the field");
             var fieldSize = input[0].Split(' ');
-            int n = 0, m = 0;
-            if (fieldSize?.Length != 2 || !int.TryParse(fieldSize[0], out n) || !int.TryParse(fieldSize[1], out m))
+            int m = 0, n = 0;
+            if (fieldSize?.Length != 2 || !int.TryParse(fieldSize[0], out m) || !int.TryParse(fieldSize[1], out n))
                 throw new ArgumentException("input should contain a first line with 2 integers");
             if (input.Length != m + 1)
-                throw new ArgumentException("After the first line, input should contain as many lines as the second integer");
+                throw new ArgumentException("After the first line, input should contain as many lines as the first integer");
             var list = input.ToList();
             list.RemoveAt(0);
             if (!list.TrueForAll(l => l.Length == n && l.All(s => ".*".Contains(s))))
-                throw new ArgumentException("Each line should contain as many caracters as the first integer, and only . and *");
+                throw new ArgumentException("Each line should contain as many caracters as the second integer, and only . and *");
 
             // At this point, input is good, let's do it!
             var field = new List<char[]>();
